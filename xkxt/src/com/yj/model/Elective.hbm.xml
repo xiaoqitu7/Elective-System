@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-10 9:50:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yj.model.Elective" table="ELECTIVE">
+         <composite-id>
+           <key-property name="xh" column="XH" type="java.lang.String"></key-property>  
+           <key-property name="kh" column="KH" type="java.lang.String"></key-property>
+           <key-property name="gh" column="GH" type="java.lang.String"></key-property>  
+        </composite-id>
+        <property name="pscj" type="java.lang.Integer">
+            <column name="PSCJ" />
+        </property>
+        <property name="kscj" type="java.lang.Integer">
+            <column name="KSCJ" />
+        </property>
+        <property name="zpcj" type="java.lang.Integer">
+            <column name="ZPCJ" />
+        </property>
+ <!--         <many-to-one name="student" column="XH" class="com.yj.model.Student" lazy="false" cascade="all"  insert="false" update="false"></many-to-one>-->
+    </class>
+</hibernate-mapping>

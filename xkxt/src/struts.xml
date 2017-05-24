@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">  
+<struts>
+    <package name="xkxt" extends="struts-default">
+        <action name="login" class="login">
+            <result name="successs">/main.jsp</result>
+             <result name="successt">/mainTeacher.jsp</result>
+              <result type="redirectAction" name="successa">queryCourse</result>
+            <result name="error">/login.jsp</result>
+        </action>
+         <action name="queryCourse" class="queryCourse">
+            <result name="success">/QueryCourse.jsp</result>
+            <result name="successa">/AdminCourse.jsp</result>
+        </action>
+         <action name="searchCourse" class="queryCourse" method="searchCourse">
+            <result name="success">/QueryCourse.jsp</result>
+        </action>
+         <action name="addElective" class="queryCourse" method="addElective">
+            <result type="redirectAction" name="success">queryElective</result>
+            <result name="error">/QueryCourse.jsp</result>
+        </action>
+        <action name="queryElective" class="queryElective">
+            <result name="success">/CourseReturn.jsp</result>
+        </action>
+         <action name="queryOpen" class="queryOpen">
+            <result name="success">/QueryCourseTeacher.jsp</result>
+        </action>
+        <action name="queryStudent" class="queryStudent">
+            <result name="success">/QueryStudent.jsp</result>
+        </action>
+        <action name="admin" class="admin">
+            <result name="success">/AdminCourse.jsp</result>
+        </action>
+         <action name="editOpen" class="admin" method="editOpen">
+             <result type="redirectAction" name="success">queryCourse</result>
+        </action>
+         <action name="addOpen" class="admin" method="addOpen">
+             <result type="redirectAction" name="success">queryCourse</result>
+        </action>
+          <action name="delOpen" class="admin" method="delOpen">
+             <result type="redirectAction" name="success">queryCourse</result>
+        </action>
+        <action name="delElective" class="queryElective" method="delElective">
+            <result type="redirectAction" name="success">queryElective</result>
+        </action>
+         <action name="editGrade" class="queryStudent" method="editGrade">
+            <result type="redirectAction" name="success">queryStudent</result>
+        </action>
+         <action name="modal" class="queryStudent" method="modal">
+            <result  name="success">QueryStudent.jsp</result>
+        </action>
+        <action name="computezpcj" class="queryStudent" method="computezpcj">
+            <result type="redirectAction" name="success">queryStudent</result>
+        </action>
+         <action name="CourseTable" class="queryElective" method="CourseTable">
+            <result name="success">/QueryCourseTable.jsp</result>
+        </action>
+    </package>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.objectFactory" value="spring" />
+</struts>

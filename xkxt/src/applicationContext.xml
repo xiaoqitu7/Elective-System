@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+        xmlns:p="http://www.springframework.org/schema/p"  
+        xmlns:aop="http://www.springframework.org/schema/aop"   
+        xmlns:context="http://www.springframework.org/schema/context"  
+        xmlns:jee="http://www.springframework.org/schema/jee"  
+        xmlns:tx="http://www.springframework.org/schema/tx"  
+        xsi:schemaLocation="    
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd  
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
+        <property name="configLocation" value="classpath:hibernate.cfg.xml" /> 
+    </bean> 
+    <bean id="login" class="com.yj.action.LoginAction">
+     <property name="studentservice" ref="studentService"/>
+     <property name="teacherservice" ref="teacherService"/>
+    </bean>
+    <bean id="queryCourse" class="com.yj.action.QueryCourseAction">
+     <property name="courseinfoservice" ref="courseinfoService"/>
+     <property name="openservice" ref="openService"/>
+     <property name="electiveservice" ref="electiveService"/>
+    </bean>
+    <bean id="admin" class="com.yj.action.AdminAction">
+     <property name="openservice" ref="openService"/>
+    </bean>
+    <bean id="queryOpen" class="com.yj.action.QueryOpenAction">
+     <property name="courseinfoservice" ref="courseinfoService"/>
+    </bean>
+    <bean id="queryStudent" class="com.yj.action.QueryStudentAction">
+   <property name="electiveservice" ref="electiveService"/>
+    <property name="studentservice" ref="studentService"/>
+    </bean>
+    <bean id="queryElective" class="com.yj.action.QueryElectiveAction">
+     <property name="courseinfoservice" ref="courseinfoService"/>
+     <property name="openservice" ref="openService"/>
+     <property name="electiveservice" ref="electiveService"/>
+    </bean>
+     <bean id="electiveService" class="com.yj.service.imp.ElectiveServiceImp">
+     <property name="electivedao" ref="electiveDao"/>
+    </bean>
+    <bean id="studentService" class="com.yj.service.imp.StudentServiceImp">
+     <property name="studentdao" ref="studentDao"/>
+    </bean>
+      <bean id="teacherService" class="com.yj.service.imp.TeacherServiceImp">
+     <property name="teacherdao" ref="teacherDao"/>
+    </bean>
+    <bean id="openService" class="com.yj.service.imp.OpenServiceImp">
+     <property name="opendao" ref="openDao"/>
+    </bean>
+    <bean id="courseinfoService" class="com.yj.service.imp.CourseInfoServiceImp">
+      <property name="coursedao" ref="courseDao" />
+      <property name="opendao" ref="openDao" />
+       <property name="studentdao" ref="studentDao"/>
+    </bean>
+    <bean id="baseDao" class="com.yj.dao.BaseDao" scope="prototype">
+      <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="studentDao" class="com.yj.dao.imp.StudentDaoImp" parent="baseDao"/>
+    <bean id="electiveDao" class="com.yj.dao.imp.ElectiveDaoImp" parent="baseDao"/>
+    <bean id="courseDao" class="com.yj.dao.imp.CourseDaoImp" parent="baseDao"/>
+    <bean id="openDao" class="com.yj.dao.imp.OpenDaoImp" parent="baseDao"/>
+     <bean id="teacherDao" class="com.yj.dao.imp.TeacherDaoImp" parent="baseDao"/>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-10 9:50:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yj.model.Teacher" table="TEACHER">
+        <id name="gh" type="java.lang.String">
+            <column name="GH" />
+            <generator class="assigned" />
+        </id>
+        <property name="xm" type="java.lang.String">
+            <column name="XM" />
+        </property>
+        <property name="yxh" type="java.lang.String">
+            <column name="YXH" />
+        </property>
+        <property name="kl" type="java.lang.String">
+            <column name="KL" />
+        </property>
+          <many-to-one name="department" column="YXH" class="com.yj.model.Department" lazy="false" cascade="all" insert="false" update="false" ></many-to-one>
+        <set name="opencourses" lazy="false" cascade="all">
+             <key column="GH"></key>
+             <one-to-many class="com.yj.model.Open"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

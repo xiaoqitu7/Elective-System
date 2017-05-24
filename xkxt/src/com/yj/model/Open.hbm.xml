@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-10 9:50:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yj.model.Open" table="OPEN">
+        <composite-id>
+           <key-property name="kh" column="KH" type="java.lang.String"></key-property>
+           <key-property name="gh" column="GH" type="java.lang.String"></key-property>  
+        </composite-id>
+        <property name="sksj" type="java.lang.String">
+            <column name="SKSJ" />
+        </property>
+        <property name="rs" type="java.lang.Integer">
+            <column name="RS" />
+        </property>
+        <many-to-one name="teacher" column="GH" class="com.yj.model.Teacher" lazy="false" insert="false" update="false"></many-to-one>
+        <many-to-one name="course" column="KH" class="com.yj.model.Course" lazy="false"  insert="false" update="false"></many-to-one>
+        <set name="electstudents" table="ELECTIVE" lazy="false" cascade="all">
+            <key>
+            <column name="KH"></column>
+            <column name="GH"></column>
+            </key>
+            <many-to-many class="com.yj.model.Student" column="XH"></many-to-many>
+        </set>
+        
+    </class>
+</hibernate-mapping>

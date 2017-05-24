@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-10 9:50:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yj.model.Department" table="DEPARTMENT">
+        <id name="yxh" type="java.lang.String">
+            <column name="YXH" />
+            <generator class="assigned" />
+        </id>
+        <property name="mc" type="java.lang.String">
+            <column name="MC" />
+        </property>
+    </class>
+</hibernate-mapping>
